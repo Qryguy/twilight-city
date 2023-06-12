@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://h7jcphre6v5c"]
+
+[ext_resource type="Script" path="res://twilight-city/scripts/playerController.gd" id="1_50k82"]
+[ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="2_1ntls"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_638li"]
+radius = 63.2202
+
+[node name="brawn" type="CharacterBody2D"]
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_50k82")
+unitName = "brawn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ntls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_638li")

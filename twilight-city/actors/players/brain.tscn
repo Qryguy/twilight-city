@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsg6705xur615"]
+
+[ext_resource type="Script" path="res://twilight-city/scripts/playerController.gd" id="1_xu6dg"]
+[ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="2_msull"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p522r"]
+radius = 64.0
+
+[node name="brain" type="CharacterBody2D"]
+script = ExtResource("1_xu6dg")
+unitName = "brain"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_msull")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p522r")

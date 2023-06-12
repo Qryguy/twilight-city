@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://f4hxhbeb1f6w"]
+
+[ext_resource type="Script" path="res://twilight-city/scripts/guard.gd" id="1_3qagn"]
+[ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="1_85p43"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8my2k"]
+radius = 64.0703
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb8yk"]
+radius = 15.3514
+
+[node name="guard" type="RigidBody2D"]
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_3qagn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_85p43")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8my2k")
+debug_color = Color(0.776471, 0.431373, 0.215686, 0.419608)
+
+[node name="guardAttack" type="Area2D" parent="."]
+
+[node name="guardAttackRange" type="CollisionShape2D" parent="guardAttack"]
+scale = Vector2(6.32, 6.32)
+shape = SubResource("CircleShape2D_sb8yk")
+debug_color = Color(0.768627, 0.0901961, 0.352941, 0.419608)
+
+[connection signal="body_entered" from="guardAttack" to="." method="_on_guard_attack_body_entered"]

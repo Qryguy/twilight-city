@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4n23n0n8gtn6"]
+
+[ext_resource type="Script" path="res://twilight-city/scripts/laser.gd" id="1_g8rti"]
+
+[node name="laser" type="RayCast2D"]
+script = ExtResource("1_g8rti")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
