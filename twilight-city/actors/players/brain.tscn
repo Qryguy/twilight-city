@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://twilight-city/scripts/playerController.gd" id="1_xu6dg"]
 [ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="2_msull"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p522r"]
-radius = 64.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2sjm"]
+size = Vector2(120, 120)
 
 [node name="brain" type="CharacterBody2D"]
 script = ExtResource("1_xu6dg")
@@ -14,4 +14,4 @@ unitName = "brain"
 texture = ExtResource("2_msull")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_p522r")
+shape = SubResource("RectangleShape2D_e2sjm")

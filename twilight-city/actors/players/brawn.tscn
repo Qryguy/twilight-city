@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://twilight-city/scripts/playerController.gd" id="1_50k82"]
 [ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="2_1ntls"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_638li"]
-radius = 63.2202
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_julca"]
+size = Vector2(120, 120)
 
 [node name="brawn" type="CharacterBody2D"]
 scale = Vector2(1.25, 1.25)
@@ -15,4 +15,4 @@ unitName = "brawn"
 texture = ExtResource("2_1ntls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_638li")
+shape = SubResource("RectangleShape2D_julca")

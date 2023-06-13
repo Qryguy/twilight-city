@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://twilight-city/scripts/guard.gd" id="1_3qagn"]
 [ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="1_85p43"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8my2k"]
-radius = 64.0703
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc041"]
+size = Vector2(120, 120)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb8yk"]
 radius = 15.3514
@@ -18,7 +18,7 @@ script = ExtResource("1_3qagn")
 texture = ExtResource("1_85p43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8my2k")
+shape = SubResource("RectangleShape2D_pc041")
 debug_color = Color(0.776471, 0.431373, 0.215686, 0.419608)
 
 [node name="guardAttack" type="Area2D" parent="."]
