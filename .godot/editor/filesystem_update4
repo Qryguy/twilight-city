@@ -1,0 +1,8 @@
+res://twilight-city/scenes/menus/pauseMenu.tscn
+res://twilight-city/scripts/playerController.gd
+res://twilight-city/scripts/pauseMenu.gd
+res://twilight-city/scenes/levels/level0.tscn
+res://twilight-city/scenes/menus/gameOver.tscn
+res://twilight-city/scenes/menus/mainMenu.tscn
+res://twilight-city/actors/objects/guard.tscn
+res://twilight-city/scripts/gameOverMenu.gd
