@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://twilight-city/scripts/gameOverMenu.gd" id="1_pteww"]
 
 [node name="Game Over Screen" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_pteww")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
