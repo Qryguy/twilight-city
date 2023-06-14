@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmkuarbx34go1"]
+[gd_scene load_steps=9 format=3 uid="uid://bmkuarbx34go1"]
 
 [ext_resource type="Texture2D" uid="uid://djblfasgdde5n" path="res://baseAssets/testLevelMockup.png" id="1_w45pw"]
 [ext_resource type="PackedScene" uid="uid://f4hxhbeb1f6w" path="res://twilight-city/actors/objects/guard.tscn" id="2_2uda3"]
@@ -8,9 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://ommrowqy7lvm" path="res://twilight-city/scenes/menus/pauseMenu.tscn" id="6_h8ecb"]
 [ext_resource type="PackedScene" uid="uid://byq61qtfrn4s6" path="res://twilight-city/scenes/menus/gameOver.tscn" id="7_mdkir"]
 
+[sub_resource type="Curve2D" id="Curve2D_a56n2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 532, 288, 0, 0, 0, 0, 207, 284, 0, 0, 0, 0, 209, 370, 0, 0, 0, 0, 531, 368, 0, 0, 0, 0, 530, 285)
+}
+point_count = 5
+
 [node name="level0" type="Node2D"]
 
+[node name="Patrols" type="Path2D" parent="."]
+curve = SubResource("Curve2D_a56n2")
+
+[node name="guardPatrol" type="PathFollow2D" parent="Patrols"]
+position = Vector2(532, 288)
+rotation = -3.12929
+
 [node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls"]
 position = Vector2(575.986, 323.747)
@@ -20,8 +34,11 @@ texture = ExtResource("1_w45pw")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(-2, -1, 1151, 0, 1151, 648, 563, 649, 562, 637, 1140, 635, 1140, 225, 784, 223, 787, 189, 1140, 187, 1140, 13, 694, 15, 697, 372, 661, 372, 661, 16, 319, 16, 317, 222, 290, 222, 290, 15, 16, 15, 16, 196, 205, 195, 206, 224, 18, 223, 15, 449, 426, 450, 425, 469, 18, 467, 15, 637, 549, 637, 549, 648, 0, 646)
 
-[node name="guard" parent="Walls" instance=ExtResource("2_2uda3")]
-position = Vector2(553, 225)
+[node name="guard" parent="Walls" node_paths=PackedStringArray("move_on_path") instance=ExtResource("2_2uda3")]
+position = Vector2(555, 289)
+scale = Vector2(0.25, 0.25)
+move_on_path = NodePath("../../Patrols/guardPatrol")
+movement_speed = 1.0
 
 [node name="brain" parent="." instance=ExtResource("3_gdijo")]
 position = Vector2(578, 568)
@@ -41,3 +58,6 @@ visible = false
 [node name="Game Over Screen" parent="." instance=ExtResource("7_mdkir")]
 unique_name_in_owner = true
 visible = false
+
+[editable path="Walls/guard"]
+[editable path="Walls/guard/VisionCone2D"]

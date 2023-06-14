@@ -22,8 +22,11 @@ func _ready():
 #process updates on every frame
 func _process(_delta):
 	if health == 0:
-		#gameover
+		#gameover		
 		gameOverScreen.visible = true
+		var new_paused_state = not get_tree().paused
+		get_tree().paused = new_paused_state
+		visible = new_paused_state
 
 #physics for movement
 func _physics_process(_delta):

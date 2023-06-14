@@ -8,6 +8,9 @@ func _ready():
 
 func _on_restart_level_pressed():
 	pass
+	var new_paused_state = not get_tree().paused
+	get_tree().paused = new_paused_state
+	visible = new_paused_state
 	get_tree().reload_current_scene()
 	#get_tree().change_scene_to_packed(currentLevel)
 

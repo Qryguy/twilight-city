@@ -8,6 +8,8 @@ func _ready():
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://twilight-city/scenes/levels/level0.tscn")
+	if get_tree().paused == true:
+		get_tree().paused = false
 	##Right now setting this to level0 as the test level, but thinking a mission select screen that unlocks over time, but scope and all that
 
 func _on_option_pressed():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://f4hxhbeb1f6w"]
+[gd_scene load_steps=6 format=3 uid="uid://f4hxhbeb1f6w"]
 
 [ext_resource type="Script" path="res://twilight-city/scripts/guard.gd" id="1_3qagn"]
 [ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="1_85p43"]
+[ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="3_u82jr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pc041"]
 size = Vector2(120, 120)
@@ -22,10 +23,20 @@ shape = SubResource("RectangleShape2D_pc041")
 debug_color = Color(0.776471, 0.431373, 0.215686, 0.419608)
 
 [node name="guardAttack" type="Area2D" parent="."]
+position = Vector2(112, 1)
+scale = Vector2(0.640001, 0.640001)
 
 [node name="guardAttackRange" type="CollisionShape2D" parent="guardAttack"]
 scale = Vector2(6.32, 6.32)
 shape = SubResource("CircleShape2D_sb8yk")
 debug_color = Color(0.768627, 0.0901961, 0.352941, 0.419608)
 
+[node name="VisionCone2D" parent="." instance=ExtResource("3_u82jr")]
+rotation = -1.5708
+angle_deg = 45
+debug_shape = true
+recalculate_if_static = false
+
 [connection signal="body_entered" from="guardAttack" to="." method="_on_guard_attack_body_entered"]
+
+[editable path="VisionCone2D"]

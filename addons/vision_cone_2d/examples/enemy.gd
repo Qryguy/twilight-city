@@ -1,7 +1,7 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-#@export var vision_renderer: Polygon2D
-#@export var alert_color: Color
+@export var vision_renderer: Polygon2D
+@export var alert_color: Color
 
 @export_group("Rotation")
 @export var is_rotating = false
@@ -13,16 +13,16 @@ extends RigidBody2D
 @export var movement_speed = 0.1
 @onready var pos_start = position.x
 
-#@onready var original_color = vision_renderer.color if vision_renderer else Color.WHITE
+@onready var original_color = vision_renderer.color if vision_renderer else Color.WHITE
 @onready var rot_start = rotation
 
-func _on_guard_attack_body_entered(body):
-	if body.name == "brawn"|| body.name == "brain":
-		body.health -= 1
-	print(body.name)
+func _on_vision_cone_area_body_entered(body: Node2D) -> void:
+	# print("%s is seeing %s" % [self, body])
+	vision_renderer.color = alert_color
 
-func _process(_delta):
-	self.transform
+func _on_vision_cone_area_body_exited(body: Node2D) -> void:
+	# print("%s stopped seeing %s" % [self, body])
+	vision_renderer.color = original_color
 
 func _physics_process(delta: float) -> void:
 	if is_rotating:
