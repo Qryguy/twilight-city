@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqbp4wlly7027"]
+
+[ext_resource type="Texture2D" uid="uid://djblfasgdde5n" path="res://baseAssets/testLevelMockup.png" id="1_vyiyg"]
+[ext_resource type="PackedScene" uid="uid://f4hxhbeb1f6w" path="res://twilight-city/actors/objects/guard.tscn" id="2_mqg5i"]
+[ext_resource type="PackedScene" uid="uid://bsg6705xur615" path="res://twilight-city/actors/players/brain.tscn" id="3_q84ta"]
+[ext_resource type="PackedScene" uid="uid://h7jcphre6v5c" path="res://twilight-city/actors/players/brawn.tscn" id="4_243cc"]
+[ext_resource type="PackedScene" uid="uid://bw5npmlikg8cg" path="res://twilight-city/actors/objects/door.tscn" id="5_7a6ag"]
+[ext_resource type="PackedScene" uid="uid://ommrowqy7lvm" path="res://twilight-city/scenes/menus/pauseMenu.tscn" id="6_4r0cc"]
+[ext_resource type="PackedScene" uid="uid://byq61qtfrn4s6" path="res://twilight-city/scenes/menus/gameOver.tscn" id="7_x77jo"]
+[ext_resource type="PackedScene" uid="uid://b6wj6m28mnhsi" path="res://twilight-city/actors/objects/teleporter.tscn" id="8_at7gt"]
+[ext_resource type="PackedScene" uid="uid://cgjpiadhgikt3" path="res://twilight-city/actors/objects/PushableCrate.tscn" id="9_n5uow"]
+
+[node name="level0" type="Node2D"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(575.986, 323.747)
+scale = Vector2(1.12307, 0.841804)
+texture = ExtResource("1_vyiyg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(-2, -1, 1151, 0, 1151, 648, 563, 649, 562, 637, 1140, 635, 1140, 225, 784, 223, 787, 189, 1140, 187, 1140, 13, 694, 15, 697, 372, 661, 372, 661, 16, 319, 16, 317, 222, 290, 222, 290, 15, 16, 15, 16, 196, 205, 195, 206, 224, 18, 223, 15, 449, 426, 450, 425, 469, 18, 467, 15, 637, 549, 637, 549, 648, 0, 646)
+
+[node name="guard" parent="Walls" instance=ExtResource("2_mqg5i")]
+position = Vector2(553, 225)
+
+[node name="brain" parent="." instance=ExtResource("3_q84ta")]
+position = Vector2(936, 585)
+scale = Vector2(0.25, 0.25)
+
+[node name="brawn" parent="." instance=ExtResource("4_243cc")]
+position = Vector2(176, 122)
+scale = Vector2(0.33, 0.33)
+
+[node name="door" parent="." instance=ExtResource("5_7a6ag")]
+position = Vector2(206, 215)
+scale = Vector2(4.0296, 4.3496)
+
+[node name="pauseMenu" parent="." instance=ExtResource("6_4r0cc")]
+visible = false
+
+[node name="Game Over Screen" parent="." instance=ExtResource("7_x77jo")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Teleporter" parent="." instance=ExtResource("8_at7gt")]
+position = Vector2(69, 66)
+metadata/PartnerPath = NodePath("../Teleporter2")
+
+[node name="Teleporter2" parent="." instance=ExtResource("8_at7gt")]
+position = Vector2(1092, 586)
+metadata/PartnerPath = NodePath("../Teleporter")
+
+[node name="PushableCrate" parent="." instance=ExtResource("9_n5uow")]
+position = Vector2(650, 560)
