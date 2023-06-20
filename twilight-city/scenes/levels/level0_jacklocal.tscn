@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqbp4wlly7027"]
+[gd_scene load_steps=12 format=3 uid="uid://cqbp4wlly7027"]
 
 [ext_resource type="Texture2D" uid="uid://djblfasgdde5n" path="res://baseAssets/testLevelMockup.png" id="1_vyiyg"]
 [ext_resource type="PackedScene" uid="uid://f4hxhbeb1f6w" path="res://twilight-city/actors/objects/guard.tscn" id="2_mqg5i"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://byq61qtfrn4s6" path="res://twilight-city/scenes/menus/gameOver.tscn" id="7_x77jo"]
 [ext_resource type="PackedScene" uid="uid://b6wj6m28mnhsi" path="res://twilight-city/actors/objects/teleporter.tscn" id="8_at7gt"]
 [ext_resource type="PackedScene" uid="uid://cgjpiadhgikt3" path="res://twilight-city/actors/objects/PushableCrate.tscn" id="9_n5uow"]
+[ext_resource type="PackedScene" uid="uid://btmx4md1qcb6j" path="res://twilight-city/actors/objects/HackingTerminal.tscn" id="10_ksu5c"]
+[ext_resource type="PackedScene" uid="uid://cpcofsb5a5jw0" path="res://twilight-city/actors/objects/Camera.tscn" id="11_u1s12"]
 
 [node name="level0" type="Node2D"]
 
@@ -56,3 +58,15 @@ partnerObject = NodePath("../Teleporter2")
 [node name="Teleporter2" parent="TeleporterPair" node_paths=PackedStringArray("partnerObject") instance=ExtResource("8_at7gt")]
 position = Vector2(1092, 586)
 partnerObject = NodePath("../Teleporter")
+
+[node name="HackingTerminal" parent="." node_paths=PackedStringArray("pairObject") instance=ExtResource("10_ksu5c")]
+position = Vector2(676, 396)
+pairObject = NodePath("../CameraTest")
+termType = 1
+
+[node name="CameraTest" parent="." instance=ExtResource("11_u1s12")]
+position = Vector2(421, 444)
+rotation = 1.07163
+Theta = 30.0
+SweepSpeed = 0.2
+SweepPauseLength = 4.0
