@@ -44,13 +44,15 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
-[node name="Teleporter" parent="." instance=ExtResource("8_at7gt")]
-position = Vector2(69, 66)
-metadata/PartnerPath = NodePath("../Teleporter2")
-
-[node name="Teleporter2" parent="." instance=ExtResource("8_at7gt")]
-position = Vector2(1092, 586)
-metadata/PartnerPath = NodePath("../Teleporter")
-
 [node name="PushableCrate" parent="." instance=ExtResource("9_n5uow")]
-position = Vector2(650, 560)
+position = Vector2(730, 578)
+
+[node name="TeleporterPair" type="Node2D" parent="."]
+
+[node name="Teleporter" parent="TeleporterPair" node_paths=PackedStringArray("partnerObject") instance=ExtResource("8_at7gt")]
+position = Vector2(60, 58)
+partnerObject = NodePath("../Teleporter2")
+
+[node name="Teleporter2" parent="TeleporterPair" node_paths=PackedStringArray("partnerObject") instance=ExtResource("8_at7gt")]
+position = Vector2(1092, 586)
+partnerObject = NodePath("../Teleporter")
