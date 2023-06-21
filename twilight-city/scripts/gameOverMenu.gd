@@ -7,7 +7,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_restart_level_pressed():
-	pass
 	var new_paused_state = not get_tree().paused
 	get_tree().paused = new_paused_state
 	visible = new_paused_state
