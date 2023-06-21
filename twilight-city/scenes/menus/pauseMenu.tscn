@@ -37,6 +37,10 @@ size_flags_vertical = 4
 layout_mode = 2
 text = "Resume"
 
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
 [node name="Options" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Options"
@@ -50,6 +54,8 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Restart" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/MainMenu" to="." method="_on_main_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

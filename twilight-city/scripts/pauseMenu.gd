@@ -13,6 +13,9 @@ func _on_resume_pressed():
 	get_tree().paused = new_paused_state
 	visible = new_paused_state
 
+func _on_restart_pressed():
+	get_tree().reload_current_scene()
+	
 func _on_options_pressed():
 	#open the options menu on top of this
 	#options will need to track which menu it came from, think we can do the same as how pause menu is put over the level, toggle visibility of a child node in this scene
