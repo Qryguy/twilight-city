@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2r4olo6y8pj1"]
+
+[ext_resource type="PackedScene" uid="uid://dlmlpwjt4uro0" path="res://twilight-city/actors/objects/textBox.tscn" id="2_7t0co"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ixj"]
+
+[node name="tutorial" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_61ixj")
+debug_color = Color(0.737255, 0.470588, 0.00784314, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+
+[node name="textBox" parent="Area2D" instance=ExtResource("2_7t0co")]
+
+[connection signal="body_entered" from="Area2D" to="Area2D/textBox" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D/textBox" method="_on_area_2d_body_exited"]
