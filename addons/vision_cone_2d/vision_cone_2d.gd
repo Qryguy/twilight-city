@@ -43,6 +43,7 @@ class_name VisionCone2D
 var _vision_points: Array[Vector2]
 var _last_position = null
 var _last_redraw_time = 0
+var canSee = false
 
 # constants for optimization
 @onready var _angle = deg_to_rad(angle_deg)
@@ -118,3 +119,9 @@ func _ray_to(direction: Vector2) -> Vector2:
 
 	var ray_position = collision["position"] if "position" in collision else destination
 	return to_local(ray_position)
+
+func _on_vision_cone_area_body_entered(body):
+	if body.name == "brawn"|| body.name == "brain":
+		print("Game Over")
+		body.health -= 1
+	print(body.name)

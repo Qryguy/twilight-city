@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Twilight-city"
+run/main_scene="res://twilight-city/scenes/levels/level0.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://f4hxhbeb1f6w"]
 
 [ext_resource type="Script" path="res://twilight-city/scripts/guard.gd" id="1_3qagn"]
-[ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="1_85p43"]
+[ext_resource type="Texture2D" uid="uid://scebk50t5u12" path="res://baseAssets/guard2Place.png" id="2_pak2w"]
 [ext_resource type="PackedScene" uid="uid://kf8tqdlm8c5t" path="res://addons/vision_cone_2d/vision_cone_2d_template.tscn" id="3_u82jr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pc041"]
@@ -16,7 +16,9 @@ freeze_mode = 1
 script = ExtResource("1_3qagn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_85p43")
+position = Vector2(5.72205e-06, -1.90735e-06)
+scale = Vector2(3.8125, 3.75)
+texture = ExtResource("2_pak2w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pc041")

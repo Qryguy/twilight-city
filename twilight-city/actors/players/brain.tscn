@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsg6705xur615"]
 
 [ext_resource type="Script" path="res://twilight-city/scripts/playerController.gd" id="1_xu6dg"]
-[ext_resource type="Texture2D" uid="uid://dl6tmk6vuwt5d" path="res://icon.svg" id="2_msull"]
+[ext_resource type="Texture2D" uid="uid://dggvnjyq0ei3e" path="res://baseAssets/hackPlaceholder.png" id="2_ei1rs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2sjm"]
 size = Vector2(120, 120)
@@ -11,7 +11,9 @@ script = ExtResource("1_xu6dg")
 unitName = "brain"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_msull")
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(3.75, 3.75)
+texture = ExtResource("2_ei1rs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e2sjm")

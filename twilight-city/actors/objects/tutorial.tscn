@@ -1,20 +1,70 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2r4olo6y8pj1"]
+[gd_scene load_steps=7 format=3 uid="uid://b2r4olo6y8pj1"]
 
 [ext_resource type="PackedScene" uid="uid://dlmlpwjt4uro0" path="res://twilight-city/actors/objects/textBox.tscn" id="2_7t0co"]
+[ext_resource type="Texture2D" uid="uid://cgva8ohxf8tah" path="res://baseAssets/QuestionSprite.png" id="2_15gax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ixj"]
+size = Vector2(33, 36)
+
+[sub_resource type="Animation" id="Animation_bo2rj"]
+resource_name = "QuestionMarkFloat"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_14sx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0db82"]
+_data = {
+"QuestionMarkFloat": SubResource("Animation_bo2rj"),
+"RESET": SubResource("Animation_14sx1")
+}
 
 [node name="tutorial" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_61ixj")
 debug_color = Color(0.737255, 0.470588, 0.00784314, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-
 [node name="textBox" parent="Area2D" instance=ExtResource("2_7t0co")]
+
+[node name="Node2D" type="Node2D" parent="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/Node2D"]
+texture = ExtResource("2_15gax")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Node2D/Sprite2D"]
+autoplay = "QuestionMarkFloat"
+libraries = {
+"": SubResource("AnimationLibrary_0db82")
+}
 
 [connection signal="body_entered" from="Area2D" to="Area2D/textBox" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D/textBox" method="_on_area_2d_body_exited"]

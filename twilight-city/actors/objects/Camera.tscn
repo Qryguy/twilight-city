@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpcofsb5a5jw0"]
+[gd_scene load_steps=4 format=3 uid="uid://d3bbruardq2e5"]
 
 [ext_resource type="Texture2D" uid="uid://cwe5lpor2m6a5" path="res://sprites/Camera.png" id="1_04aky"]
 [ext_resource type="Script" path="res://twilight-city/scripts/CameraController.gd" id="1_rm01t"]
