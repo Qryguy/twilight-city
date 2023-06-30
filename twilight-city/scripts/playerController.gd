@@ -32,10 +32,9 @@ func _ready():
 
 #process updates on every frame
 func _process(_delta):
-	playerUse()
-	#should move gameover state to "game controller" and check that both players are downed
+	#playerUse()
 	if health == 0:
-		#gameover		
+		#gameover
 		gameOverScreen.visible = true
 		var new_paused_state = not get_tree().paused
 		get_tree().paused = new_paused_state
@@ -66,17 +65,18 @@ func _physics_process(_delta):
 		#if mash required, should toggle object while pressing movement keys
 		#when correct movement key is pressed, a new key should be chosen and the timer reset
 		#toggles to original state if randkey not pressed for 2 sec or 
-func playerUse(): #add delta here and pass in from process if doing anything with the mashing stuff
-	if interactArea != null: #checks that the area is a valid object
-		if Input.is_action_just_pressed(playerControl+"_use"):
-			if self.name == "brawn" && not interactArea.isBrawn:
-				return
-			if self.name == "brain" && not interactArea.isBrain:
-				return
-			else:
-				print("playerUsedKeyPressed")
-				var new_active_state = not interactArea.isActive
-				interactArea.isActive = new_active_state
+		#NOT USED
+#func _playerUse(): #add delta here and pass in from process if doing anything with the mashing stuff
+#	if interactArea != null: #checks that the area is a valid object
+#		if Input.is_action_just_pressed(playerControl+"_use"):
+#			if self.name == "brawn" && not interactArea.isBrawn:
+#				return
+#			if self.name == "brain" && not interactArea.isBrain:
+#				return
+#			else:
+#				print("playerUsedKeyPressed")
+#				var new_active_state = not interactArea.isActive
+#				interactArea.isActive = new_active_state
 				#play animation?
 		#must mash which forces the player to press movement keys
 #		if interactArea.mustMash:

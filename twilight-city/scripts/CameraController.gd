@@ -12,6 +12,8 @@ func _ready():
 	Theta = deg_to_rad(Theta)
 	if(!self.has_node("VisionCone2D")):
 		assert("No vision cone is present in Camera " + self.name)
+	if(!self.has_node("VisionCone2D/VisionConeArea")):
+		assert("No vision area is present in Camera " + self.name)
 		
 func _physics_process(delta):
 	if(!self.disabled):
@@ -32,6 +34,8 @@ func _physics_process(delta):
 
 func on_hack():
 	var node = self.get_node("VisionCone2D")
+	var areaCol = self.get_node("VisionCone2D/VisionConeArea/VisionConeCollider")
 	node.set_process(!node.can_process())
 	node.hide()
+	areaCol.disabled = true
 	self.disabled = true

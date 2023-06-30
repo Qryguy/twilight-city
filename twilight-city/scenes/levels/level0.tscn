@@ -1,27 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmkuarbx34go1"]
+[gd_scene load_steps=12 format=3 uid="uid://bmkuarbx34go1"]
 
 [ext_resource type="Texture2D" uid="uid://djblfasgdde5n" path="res://baseAssets/testLevelMockup.png" id="1_w45pw"]
 [ext_resource type="PackedScene" uid="uid://f4hxhbeb1f6w" path="res://twilight-city/actors/objects/guard.tscn" id="2_2uda3"]
 [ext_resource type="PackedScene" uid="uid://bsg6705xur615" path="res://twilight-city/actors/players/brain.tscn" id="3_gdijo"]
 [ext_resource type="PackedScene" uid="uid://h7jcphre6v5c" path="res://twilight-city/actors/players/brawn.tscn" id="4_xcm1p"]
-[ext_resource type="PackedScene" uid="uid://bw5npmlikg8cg" path="res://twilight-city/actors/objects/door.tscn" id="5_kbcow"]
 [ext_resource type="PackedScene" uid="uid://ommrowqy7lvm" path="res://twilight-city/scenes/menus/pauseMenu.tscn" id="6_h8ecb"]
 [ext_resource type="PackedScene" uid="uid://byq61qtfrn4s6" path="res://twilight-city/scenes/menus/gameOver.tscn" id="7_mdkir"]
+[ext_resource type="PackedScene" uid="uid://b2r4olo6y8pj1" path="res://twilight-city/actors/objects/tutorial.tscn" id="8_ldns2"]
+[ext_resource type="PackedScene" uid="uid://d3bbruardq2e5" path="res://twilight-city/actors/objects/Camera.tscn" id="8_o7lhb"]
+[ext_resource type="PackedScene" uid="uid://cho1yp41hj5ry" path="res://twilight-city/actors/objects/HackingTerminal.tscn" id="9_b0u0m"]
+[ext_resource type="PackedScene" uid="uid://cgjpiadhgikt3" path="res://twilight-city/actors/objects/PushableCrate.tscn" id="10_iujby"]
 
 [sub_resource type="Curve2D" id="Curve2D_a56n2"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 532, 288, 0, 0, 0, 0, 207, 284, 0, 0, 0, 0, 209, 370, 0, 0, 0, 0, 531, 368, 0, 0, 0, 0, 530, 285)
+"points": PackedVector2Array(0, 0, 0, 0, 191, 302, 0, 0, 0, 0, 516, 298, 0, 0, 0, 0, 513, 368, 0, 0, 0, 0, 194, 370, 0, 0, 0, 0, 191, 303)
 }
 point_count = 5
 
 [node name="level0" type="Node2D"]
-
-[node name="Patrols" type="Path2D" parent="."]
-curve = SubResource("Curve2D_a56n2")
-
-[node name="guardPatrol" type="PathFollow2D" parent="Patrols"]
-position = Vector2(532, 288)
-rotation = -3.12929
 
 [node name="Walls" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -32,25 +28,58 @@ scale = Vector2(1.12307, 0.841804)
 texture = ExtResource("1_w45pw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(-2, -1, 1151, 0, 1151, 648, 563, 649, 562, 637, 1140, 635, 1140, 225, 784, 223, 787, 189, 1140, 187, 1140, 13, 694, 15, 697, 372, 661, 372, 661, 16, 319, 16, 317, 222, 290, 222, 290, 15, 16, 15, 16, 196, 205, 195, 206, 224, 18, 223, 15, 449, 426, 450, 425, 469, 18, 467, 15, 637, 549, 637, 549, 648, 0, 646)
+polygon = PackedVector2Array(-2, -1, 1151, 0, 1151, 648, 563, 649, 562, 637, 1140, 635, 1140, 225, 784, 223, 787, 189, 1140, 187, 1140, 13, 694, 15, 697, 372, 661, 372, 661, 16, 319, 16, 317, 222, 290, 222, 290, 15, 16, 15, 16, 196, 205, 195, 206, 224, 18, 223, 16, 447, 426, 450, 427, 468, 18, 469, 15, 637, 549, 637, 549, 648, 0, 646)
 
-[node name="guard" parent="Walls" node_paths=PackedStringArray("move_on_path") instance=ExtResource("2_2uda3")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Patrols" type="Path2D" parent="Enemies"]
+curve = SubResource("Curve2D_a56n2")
+
+[node name="guardPatrol" type="PathFollow2D" parent="Enemies/Patrols"]
+position = Vector2(191, 302)
+rotation = -0.0123071
+
+[node name="guard" parent="Enemies" node_paths=PackedStringArray("move_on_path") instance=ExtResource("2_2uda3")]
 position = Vector2(555, 289)
 scale = Vector2(0.25, 0.25)
-move_on_path = NodePath("../../Patrols/guardPatrol")
+lock_rotation = true
+move_on_path = NodePath("../Patrols/guardPatrol")
 movement_speed = 1.0
 
+[node name="CameraNode1" type="Node2D" parent="Enemies"]
+
+[node name="Camera" parent="Enemies/CameraNode1" instance=ExtResource("8_o7lhb")]
+position = Vector2(353, 473)
+rotation = -1.54215
+
+[node name="HackingTerminal" parent="Enemies/CameraNode1" node_paths=PackedStringArray("pairObject") instance=ExtResource("9_b0u0m")]
+position = Vector2(952, 213)
+pairObject = NodePath("../Camera")
+
+[node name="CameraNode2" type="Node2D" parent="Enemies"]
+
+[node name="Camera" parent="Enemies/CameraNode2" instance=ExtResource("8_o7lhb")]
+position = Vector2(425, 444)
+rotation = 1.69122
+Theta = 15.0
+SweepSpeed = 0.2
+
+[node name="VisionCone2D" parent="Enemies/CameraNode2/Camera" index="1"]
+recalculate_if_static = true
+
+[node name="HackingTerminal" parent="Enemies/CameraNode2" node_paths=PackedStringArray("pairObject") instance=ExtResource("9_b0u0m")]
+position = Vector2(241, 473)
+pairObject = NodePath("../Camera")
+
 [node name="brain" parent="." instance=ExtResource("3_gdijo")]
-position = Vector2(578, 568)
+unique_name_in_owner = true
+position = Vector2(937, 105)
 scale = Vector2(0.25, 0.25)
 
 [node name="brawn" parent="." instance=ExtResource("4_xcm1p")]
-position = Vector2(521, 564)
+unique_name_in_owner = true
+position = Vector2(880, 101)
 scale = Vector2(0.33, 0.33)
-
-[node name="door" parent="." instance=ExtResource("5_kbcow")]
-position = Vector2(206, 215)
-scale = Vector2(4.0296, 4.3496)
 
 [node name="pauseMenu" parent="." instance=ExtResource("6_h8ecb")]
 visible = false
@@ -59,5 +88,50 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
-[editable path="Walls/guard"]
-[editable path="Walls/guard/VisionCone2D"]
+[node name="tutorials" type="Node2D" parent="."]
+
+[node name="tutorialMovement" parent="tutorials" instance=ExtResource("8_ldns2")]
+
+[node name="Area2D" parent="tutorials/tutorialMovement" index="0"]
+position = Vector2(956, 103)
+
+[node name="textBox" parent="tutorials/tutorialMovement/Area2D" index="1"]
+labelText = "Don't be seen.
+Move players with WASD and IJKL. Pause with Esc and Bkspc.
+"
+
+[node name="tutorialTerminals" parent="tutorials" instance=ExtResource("8_ldns2")]
+
+[node name="Area2D" parent="tutorials/tutorialTerminals" index="0"]
+position = Vector2(859, 279)
+
+[node name="textBox" parent="tutorials/tutorialTerminals/Area2D" index="1"]
+labelText = "Brain, the smaller unit, can access terminals in the area to activate objects throughout the level. Right now, it just turns off cameras."
+
+[node name="tutorialCreate" parent="tutorials" instance=ExtResource("8_ldns2")]
+
+[node name="Area2D" parent="tutorials/tutorialCreate" index="0"]
+position = Vector2(74, 546)
+
+[node name="textBox" parent="tutorials/tutorialCreate/Area2D" index="1"]
+labelText = "Brawn, the bigger player was supposed to be able to move crates by pushing them, but we didn't get this piece to work yet."
+
+[node name="tutorialEnd" parent="tutorials" instance=ExtResource("8_ldns2")]
+position = Vector2(137, 98)
+
+[node name="textBox" parent="tutorials/tutorialEnd/Area2D" index="1"]
+labelText = "Try to get both players in this room as a victory condition. We ran out of time for developing a more robust win condition to open a new level at this time."
+
+[node name="PushableCrate" parent="." instance=ExtResource("10_iujby")]
+position = Vector2(126, 590)
+
+[editable path="Enemies/guard"]
+[editable path="Enemies/guard/VisionCone2D"]
+[editable path="Enemies/CameraNode1/Camera"]
+[editable path="Enemies/CameraNode1/Camera/VisionCone2D"]
+[editable path="Enemies/CameraNode2/Camera"]
+[editable path="Enemies/CameraNode2/Camera/VisionCone2D"]
+[editable path="tutorials/tutorialMovement"]
+[editable path="tutorials/tutorialTerminals"]
+[editable path="tutorials/tutorialCreate"]
+[editable path="tutorials/tutorialEnd"]

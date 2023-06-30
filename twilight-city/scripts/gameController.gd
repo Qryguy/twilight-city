@@ -1,12 +1,8 @@
-##This is the script that manages the game settings and all that.
-	#I think the way we would do this in Godot is to have this scene always running but instantiate the "child scenes" when selected...?
+extends Node
 
-extends Node2D
-#Determine the scene to Instantiate
-var currentScene: SceneTree
-#Determine a scene to overlay: Main HUD, Pause Menu or Game Over screen
-var currentOverlay: SceneTree
-
+@onready var gameOverScreen: CanvasLayer = get_node("%Game Over Screen")
+#@onready var playerBrain: playerController = get_node("%brain")
+#@onready var playerBrawn: playerController = get_node("%brawn")
 # Config Class : https://docs.godotengine.org/en/stable/classes/class_configfile.html#class-configfile
 ## Create new ConfigFile object.
 #var config = ConfigFile.new()
@@ -28,7 +24,10 @@ var currentOverlay: SceneTree
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	print(gameOverScreen.name)
+#	if playerBrain.health == 0 && playerBrawn.health == 0:
+#		gameOverScreen.visible = true
+#		var new_paused_state = not get_tree().paused
+#		get_tree().paused = new_paused_state

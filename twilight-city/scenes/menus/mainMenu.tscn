@@ -24,7 +24,7 @@ size_flags_vertical = 4
 
 [node name="gameTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Twilite City"
+text = "Fuck Crunch, Fuck Capitalism"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
